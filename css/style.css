@@ -1,0 +1,160 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  line-height: 1.6;
+  background: #f9f9f9;
+  color: #222;
+}
+
+header {
+  background: #000;
+  color: #fff;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+header .logo {
+  font-size: 1.5em;
+}
+
+header nav ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+header nav a {
+  color: #fff;
+  text-decoration: none;
+}
+
+#toggle-dark {
+  background: none;
+  border: 1px solid #fff;
+  color: #fff;
+  padding: 6px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.hero {
+  background: #111;
+  color: #fff;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+.hero .cta-buttons {
+  margin-top: 20px;
+}
+
+.btn {
+  display: inline-block;
+  background: #1e90ff;
+  color: #fff;
+  padding: 12px 24px;
+  margin: 5px;
+  border: none;
+  text-decoration: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.btn-alt {
+  background: #28a745;
+}
+
+.content {
+  padding: 40px 20px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.content h2 {
+  font-size: 2rem;
+  margin-bottom: 15px;
+}
+
+.content ul {
+  padding-left: 20px;
+}
+
+.goals {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  max-width: 500px;
+  margin-top: 20px;
+}
+
+form input,
+form textarea {
+  margin-bottom: 10px;
+  padding: 10px;
+  font-size: 1rem;
+}
+
+form button {
+  align-self: flex-start;
+}
+
+footer {
+  background: #222;
+  color: #eee;
+  text-align: center;
+  padding: 20px;
+  margin-top: 40px;
+}
+
+footer a {
+  color: #4db8ff;
+}
+
+/* DARK MODE */
+body.dark {
+  background: #111;
+  color: #ddd;
+}
+
+body.dark header {
+  background: #000;
+}
+
+body.dark .hero {
+  background: #222;
+}
+
+body.dark footer {
+  background: #111;
+}
+
+body.dark a {
+  color: #4db8ff;
+}
+
+body.dark .btn {
+  background: #007acc;
+}
+
+body.dark .btn-alt {
+  background: #218838;
+}
