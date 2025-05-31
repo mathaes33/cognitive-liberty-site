@@ -46,7 +46,7 @@ header nav a {
 }
 
 .hero {
-  background: #111 url('//mathaes33/cognitive-liberty-site/background_image.jpg') center center/cover no-repeat;
+  background: #111 url('background_image.jpg') center center/cover no-repeat;
   color: #fff;
   padding: 60px 20px;
   text-align: center;
