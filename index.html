@@ -75,12 +75,31 @@
     <a href="https://www.paypal.com/ncp/payment/UYZQST9AGDJAW" target="_blank" class="btn btn-alt">Donate via PayPal</a>
   </section>
 
-  <section class="content" id="newsletter">
-    <h2>Join Our Newsletter</h2>
-    <form id="newsletter-form">
-      <input type="email" id="email" placeholder="Enter your email" required/>
-      <button type="submit" class="btn">Subscribe</button>
-    </form>
+  <section <section class="content" id="news">
+  <h2>News Feed</h2>
+  <div id="news-feed" style="border:2px solid #007acc; border-radius:8px; padding:1rem; background:#fafcff;"></div>
+</section>
+
+<script>
+  function renderNewsFeed() {
+    const container = document.getElementById('news-feed');
+    let posts = JSON.parse(localStorage.getItem('newsPosts') || '[]');
+    if (!posts.length) {
+      container.innerHTML = "<p>No news posts yet.</p>";
+      return;
+    }
+    let html = posts.slice(0, 5).map(post => `
+      <div style="margin-bottom:1.2em; padding-bottom:1em; border-bottom:1px solid #e0e0e0;">
+        <div style="font-size:1.1em; font-weight:bold;">${post.title}</div>
+        <div style="color:#555; margin:.3em 0;">${new Date(post.date).toLocaleString()}</div>
+        <div>${post.body.replace(/\n/g, "<br>")}</div>
+      </div>
+    `).join('');
+    container.innerHTML = html;
+  }
+  // Run on page load
+  renderNewsFeed();
+</script>
   </section>
 
   <section class="content" id="contact">
