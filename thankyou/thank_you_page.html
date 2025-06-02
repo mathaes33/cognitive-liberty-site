@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Thank You – Cognitive Liberty Foundation</title>
+  
+  <!-- Fonts & Styles -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css" />
+
+  <!-- Scripts -->
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  <script defer src="js/script.js"></script>
+</head>
+
+<body class="thank-you">
+  <main class="thank-you-container">
+    <h1>🧠 Thank You!</h1>
+    <p>Your support for cognitive liberty means the world to us.</p>
+    <a href="https://mathaes33.github.io/cognitive-liberty-site/" class="btn">Return to Main Site</a>
+
+    <section class="petition-cta">
+      <h2>📝 Take Action</h2>
+      <p>Help us strengthen cognitive freedom — sign the petition today.</p>
+      <a href="https://www.change.org/mindmatters" class="btn btn-alt" target="_blank">Sign the Petition</a>
+    </section>
+
+    <footer class="social-cta">
+      <p>📢 Share the cause: 
+        <a href="https://www.facebook.com/61577041432345/posts/122094337256901381/?mibextid=rS40aB7S9Ucbxw6v" target="_blank">Facebook</a> | 
+        ✉️ <a href="mailto:cognitiveliberty.ca@gmail.com">Email Us</a>
+      </p>
+    </footer>
+  </main>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      confetti({
+        particleCount: 100,
+        spread: 70,
+        origin: { y: 0.6 },
+        scalar: 0.6,
+        colors: ['#00f5d4', '#ff00c8', '#3a0ca3'],
+        disableForReducedMotion: true
+      });
+    });
+  </script>
+</body>
+</html>
