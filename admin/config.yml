@@ -6,7 +6,6 @@ media_folder: "images/uploads"
 public_folder: "/images/uploads"
 
 collections:
-
   - name: "news"
     label: "News Cards"
     folder: "news"
