@@ -7,6 +7,27 @@ body {
   line-height: 1.6;
 }
 
+/* Center all heading text */
+h1, h2, h3, h4, h5, h6 {
+  text-align: center;
+}
+
+/* Center the form itself within its parent and its content */
+form {
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+form input,
+form textarea,
+form button,
+.form-submit {
+  text-align: center;
+}
+
 header {
   background: #222;
   color: white;
