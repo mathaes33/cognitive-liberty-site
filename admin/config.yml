@@ -2,16 +2,29 @@ backend:
   name: git-gateway
   branch: main
 
-media_folder: "assets/uploads"
-public_folder: "/assets/uploads"
+media_folder: "images/uploads"
+public_folder: "/images/uploads"
 
 collections:
+
   - name: "news"
-    label: "News Posts"
-    folder: "content/news"
+    label: "News Cards"
+    folder: "news"
     create: true
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     fields:
       - { label: "Title", name: "title", widget: "string" }
-      - { label: "Publish Date", name: "date", widget: "datetime" }
+      - { label: "Date", name: "date", widget: "datetime" }
       - { label: "Body", name: "body", widget: "markdown" }
+
+  - name: "goals"
+    label: "Goals List"
+    format: "yaml"
+    file: "_data/goals.yml"
+    fields:
+      - label: "Goals"
+        name: "goals"
+        widget: "list"
+        fields:
+          - { label: "Number", name: "number", widget: "number" }
+          - { label: "Text", name: "text", widget: "string" }
