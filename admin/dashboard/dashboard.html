@@ -1,1 +1,80 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Admin Dashboard</title>
+    <style>
+      body { font-family: Arial, sans-serif; margin: 0; background: #f5f6fa; }
+      .dashboard-container { display: flex; flex-direction: column; align-items: center; padding: 2rem; }
+      .dashboard-card { background: #fff; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); margin: 1rem 0; padding: 1.5rem; width: 100%; max-width: 800px; }
+      h2 { margin-top: 0; }
+      .functions { display: flex; gap: 2rem; margin-top: 1rem; }
+      .functions a, .functions button { padding: 0.75rem 1.5rem; border: none; border-radius: 4px; background: #007acc; color: #fff; text-decoration: none; cursor: pointer; font-size: 1rem; }
+      .functions a:hover, .functions button:hover { background: #005fa3; }
+      iframe { width: 100%; height: 400px; border: none; }
+      .form-group { margin-bottom: 1rem; }
+      .form-label { display: block; margin-bottom: 0.5rem; font-weight: bold; }
+      .form-input, .form-textarea { width: 100%; padding: 0.5rem; border: 1px solid #ccc; border-radius: 4px; }
+      .form-textarea { min-height: 100px; }
+      .form-submit { background: #28a745; color: #fff; border: none; padding: 0.75rem 1.5rem; border-radius: 4px; cursor: pointer; font-size: 1rem; }
+      .form-submit:hover { background: #1e7e34; }
+      .info { font-size: 0.95em; color: #666; margin-bottom: 1rem; }
+    </style>
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+    <script src="https://unpkg.com/netlify-cms@^2.0.0/dist/netlify-cms.js"></script>
+  </head>
+  <body>
+    <div class="dashboard-container">
+      <div class="dashboard-card">
+        <h2>Site Analytics</h2>
+        <!-- Replace the src below with your Google Analytics/Looker Studio dashboard link -->
+        <iframe src="https://lookerstudio.google.com/embed/reporting/YOUR_REPORT_ID/page/1M" allowfullscreen></iframe>
+        <p style="font-size:0.9em; color: #999;">(Embed your Looker Studio dashboard linked to Google Analytics. Replace the src above with your report link.)</p>
+      </div>
+      <div class="dashboard-card">
+        <h2>Quick Admin Functions</h2>
+        <div class="functions">
+          <a href="/admin/" target="_blank">Open Content Manager</a>
+          <button onclick="netlifyIdentity.open()">User Management</button>
+        </div>
+      </div>
+      <div class="dashboard-card">
+        <h2>Post News/Update</h2>
+        <div class="info">
+          To post news or updates, use the form below. Submissions will be managed via Netlify CMS for security and version control.<br>
+          For advanced editing, use the <a href="/admin/" target="_blank">Content Manager</a>.
+        </div>
+        <form onsubmit="handleNewsPost(event)">
+          <div class="form-group">
+            <label class="form-label" for="news-title">Title</label>
+            <input class="form-input" type="text" id="news-title" required />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="news-body">Content</label>
+            <textarea class="form-textarea" id="news-body" required></textarea>
+          </div>
+          <button class="form-submit" type="submit">Submit News</button>
+        </form>
+        <div id="news-result" class="info"></div>
+      </div>
+    </div>
+    <script>
+      // Initialize Netlify Identity for user management
+      if (window.netlifyIdentity) {
+        window.netlifyIdentity.on("init", user => {
+          if (!user) {
+            window.netlifyIdentity.open();
+          }
+        });
+      }
 
+      // Simple form handler for demonstration — real posting is via Netlify CMS
+      function handleNewsPost(event) {
+        event.preventDefault();
+        document.getElementById('news-result').innerHTML =
+          "Please use the <a href='/admin/' target='_blank'>Content Manager</a> to post news and updates with full version control and publishing privileges.";
+        event.target.reset();
+      }
+    </script>
+  </body>
+</html>
