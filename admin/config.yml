@@ -16,14 +16,17 @@ collections:
       - { label: "Date", name: "date", widget: "datetime" }
       - { label: "Body", name: "body", widget: "markdown" }
 
-  - name: "goals"
-    label: "Goals List"
-    format: "yaml"
-    file: "_data/goals.yml"
-    fields:
-      - label: "Goals"
-        name: "goals"
-        widget: "list"
+ - label: "Goals"
+    name: "goals"
+    files:
+      - label: "Goals List"
+        name: "goals_list"
+        file: "_data/goals.yml"
+        format: "yaml"
         fields:
-          - { label: "Number", name: "number", widget: "number" }
-          - { label: "Text", name: "text", widget: "string" }
+          - label: "Goals"
+            name: "goals"
+            widget: "list"
+            fields:
+              - { label: "Number", name: "number", widget: "number" }
+              - { label: "Text", name: "text", widget: "string" }
