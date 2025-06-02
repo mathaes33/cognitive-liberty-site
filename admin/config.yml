@@ -16,7 +16,7 @@ collections:
       - { label: "Date", name: "date", widget: "datetime" }
       - { label: "Body", name: "body", widget: "markdown" }
 
- - label: "Goals"
+  - label: "Goals"
     name: "goals"
     files:
       - label: "Goals List"
