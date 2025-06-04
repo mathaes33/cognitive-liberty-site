@@ -1,19 +1,34 @@
+/* Reset & Base Styles */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+:root {
+  --main-bg: #f5f7fa;
+  --main-text: #1e1e1e;
+  --accent: #fca311;
+  --accent-hover: #ffb733;
+  --nav-bg: #14213d;
+  --paypal-blue: #0070ba;
+  --paypal-blue-hover: #005c9e;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: 'Helvetica Neue', sans-serif;
-  background: #f5f7fa;
-  color: #1e1e1e;
+  background: var(--main-bg);
+  color: var(--main-text);
   line-height: 1.6;
 }
 
 /* Navbar */
 .navbar {
-  background: #14213d;
+  background: var(--nav-bg);
   color: white;
   padding: 1rem 2rem;
   display: flex;
@@ -62,7 +77,7 @@ body {
     display: none;
     flex-direction: column;
     width: 100%;
-    background: #14213d;
+    background: var(--nav-bg);
     margin-top: 1rem;
   }
 
@@ -70,12 +85,17 @@ body {
     display: flex;
   }
 
+  .navbar ul {
+    flex-direction: column;
+    width: 100%;
+  }
+
   .navbar ul li {
     padding: 0.5rem 0;
   }
 }
 
-/* Hero */
+/* Hero Section */
 .hero {
   background: linear-gradient(135deg, #283e51, #485563);
   color: white;
@@ -87,8 +107,8 @@ body {
 .btn,
 .btn-primary,
 button {
-  background: #fca311;
-  color: #1e1e1e;
+  background: var(--accent);
+  color: var(--main-text);
   padding: 0.8rem 1.5rem;
   text-decoration: none;
   font-weight: bold;
@@ -96,18 +116,18 @@ button {
   border-radius: 4px;
   cursor: pointer;
   display: inline-block;
-  margin: 0.5rem;
+  margin: 0.5rem 0.3rem;
   transition: background 0.3s ease;
 }
 
 .btn:hover,
 .btn-primary:hover,
 button:hover {
-  background: #ffb733;
+  background: var(--accent-hover);
 }
 
 .paypal-btn {
-  background: #0070ba;
+  background: var(--paypal-blue);
   color: white;
   padding: 0.8rem 1.5rem;
   border-radius: 4px;
@@ -117,16 +137,17 @@ button:hover {
 }
 
 .paypal-btn:hover {
-  background: #005c9e;
+  background: var(--paypal-blue-hover);
 }
 
-/* Sections */
+/* Content Sections */
 .content {
   padding: 3rem 2rem;
   max-width: 900px;
   margin: auto;
 }
 
+/* Form Styles */
 form {
   display: flex;
   flex-direction: column;
@@ -135,6 +156,7 @@ form {
 
 input,
 textarea {
+  width: 100%;
   padding: 0.8rem;
   border: 1px solid #ccc;
   border-radius: 4px;
@@ -148,18 +170,25 @@ label {
 input:focus,
 textarea:focus {
   outline: none;
-  border-color: #14213d;
+  border-color: var(--nav-bg);
   box-shadow: 0 0 0 2px rgba(20, 33, 61, 0.2);
 }
 
+/* Newsletter Feedback */
+#newsletter-message {
+  font-weight: bold;
+  margin-top: 0.5rem;
+}
+
+/* Footer */
 .footer {
-  background: #14213d;
+  background: var(--nav-bg);
   color: white;
   text-align: center;
   padding: 1rem;
 }
 
-/* Scroll Animation */
+/* Scroll Reveal */
 [data-reveal] {
   opacity: 0;
   transform: translateY(20px);
@@ -169,4 +198,38 @@ textarea:focus {
 [data-reveal].revealed {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* Dark Mode */
+body.dark {
+  background: #1e1e1e;
+  color: #f5f5f5;
+}
+
+body.dark .navbar,
+body.dark .footer {
+  background: #0f1b2e;
+}
+
+body.dark .btn,
+body.dark .btn-primary,
+body.dark button {
+  background: var(--accent);
+  color: var(--main-text);
+}
+
+body.dark input,
+body.dark textarea {
+  background: #2a2a2a;
+  color: #f5f5f5;
+  border-color: #444;
+}
+
+/* Accessibility Utility */
+.visually-hidden {
+  position: absolute;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
 }
