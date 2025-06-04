@@ -42,7 +42,24 @@ const body = document.body;
 if (localStorage.getItem('darkMode') === 'true') {
   body.classList.add('dark');
 }
+// Mobile nav toggle
+document.querySelector('.nav-toggle').addEventListener('click', () => {
+  document.getElementById('nav-menu').classList.toggle('show');
+}
 
+// Scroll reveal
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('revealed');
+      observer.unobserve(entry.target);
+    }
+  });
+}, {
+  threshold: 0.1
+});
+
+document.querySelectorAll('[data-reveal]').forEach(el => observer.observe(el));
 toggleDark.addEventListener('click', () => {
   body.classList.toggle('dark');
   localStorage.setItem('darkMode', body.classList.contains('dark'));
