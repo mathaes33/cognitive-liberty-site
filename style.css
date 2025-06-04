@@ -1,0 +1,172 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Helvetica Neue', sans-serif;
+  background: #f5f7fa;
+  color: #1e1e1e;
+  line-height: 1.6;
+}
+
+/* Navbar */
+.navbar {
+  background: #14213d;
+  color: white;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.logo {
+  font-size: 1.4rem;
+  font-weight: bold;
+}
+
+.navbar ul {
+  list-style: none;
+  display: flex;
+  gap: 1.2rem;
+  flex-wrap: wrap;
+}
+
+.navbar a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.navbar a:hover {
+  text-decoration: underline;
+}
+
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .nav-toggle {
+    display: block;
+  }
+
+  #nav-menu {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    background: #14213d;
+    margin-top: 1rem;
+  }
+
+  #nav-menu.show {
+    display: flex;
+  }
+
+  .navbar ul li {
+    padding: 0.5rem 0;
+  }
+}
+
+/* Hero */
+.hero {
+  background: linear-gradient(135deg, #283e51, #485563);
+  color: white;
+  padding: 4rem 2rem;
+  text-align: center;
+}
+
+/* Buttons */
+.btn,
+.btn-primary,
+button {
+  background: #fca311;
+  color: #1e1e1e;
+  padding: 0.8rem 1.5rem;
+  text-decoration: none;
+  font-weight: bold;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  display: inline-block;
+  margin: 0.5rem;
+  transition: background 0.3s ease;
+}
+
+.btn:hover,
+.btn-primary:hover,
+button:hover {
+  background: #ffb733;
+}
+
+.paypal-btn {
+  background: #0070ba;
+  color: white;
+  padding: 0.8rem 1.5rem;
+  border-radius: 4px;
+  display: inline-block;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.paypal-btn:hover {
+  background: #005c9e;
+}
+
+/* Sections */
+.content {
+  padding: 3rem 2rem;
+  max-width: 900px;
+  margin: auto;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+input,
+textarea {
+  padding: 0.8rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+label {
+  font-weight: bold;
+}
+
+input:focus,
+textarea:focus {
+  outline: none;
+  border-color: #14213d;
+  box-shadow: 0 0 0 2px rgba(20, 33, 61, 0.2);
+}
+
+.footer {
+  background: #14213d;
+  color: white;
+  text-align: center;
+  padding: 1rem;
+}
+
+/* Scroll Animation */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+[data-reveal].revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
