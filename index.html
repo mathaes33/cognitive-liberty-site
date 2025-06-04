@@ -4,16 +4,19 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Cognitive Liberty Foundation</title>
-  <link rel="stylesheet" href="css/style.css"/> 
+  <meta name="description" content="Join the movement to protect mental privacy and cognitive freedom." />
+  <link rel="stylesheet" href="style.css"/>
+  <link rel="icon" href="favicon.ico" />
   <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-  <script defer src="js/script.js"></script>
+  <script defer src="script.js"></script>
 </head>
 <body>
 
-  <header>
+  <header class="navbar" role="banner">
     <div class="logo">Cognitive Liberty Foundation</div>
-    <nav>
-      <ul>
+    <button class="nav-toggle" aria-label="Toggle navigation">&#9776;</button>
+    <nav role="navigation">
+      <ul id="nav-menu">
         <li><a href="#mission">Mission</a></li>
         <li><a href="#goals">Goals</a></li>
         <li><a href="#news">News</a></li>
@@ -24,42 +27,30 @@
     <button id="toggle-dark" title="Toggle dark mode" aria-label="Toggle dark mode">🌓</button>
   </header>
 
-  <section class="hero">
+  <section class="hero" data-reveal>
     <h1><strong>Protect Your Mind. Preserve Your Freedom.</strong></h1>
     <p>Your thoughts are yours. Join the movement to defend cognitive liberty.</p>
     <div class="cta-buttons">
-      <a href="https://www.change.org/mindmatters" target="_blank" class="btn">✍ Sign the Petition</a>
-      <a href="https://www.paypal.com/ncp/payment/UYZQST9AGDJAW" target="_blank" class="btn btn-alt">💸 Donate Now</a>
+      <a href="https://www.change.org/mindmatters" target="_blank" class="btn btn-primary">✍ Sign the Petition</a>
+      <a href="https://www.paypal.com/ncp/payment/UYZQST9AGDJAW" target="_blank" class="paypal-btn">💸 Donate Now</a>
     </div>
   </section>
 
-  <section class="content" id="mission">
+  <section class="content" id="mission" data-reveal>
     <h2><strong>What is Cognitive Liberty?</strong></h2>
     <p class="mission-desc">
       Cognitive liberty is the idea that your mind is your own. It’s about sovereignty over your thoughts, emotions, and mental states—free from manipulation and surveillance.
     </p>
 
     <div class="mission-pillars">
-      <div>
-        <div class="pillar-title"><strong>FREEDOM OF THOUGHT</strong></div>
-        <div class="pillar-desc">Think freely without being nudged or coerced.</div>
-      </div>
-      <div>
-        <div class="pillar-title"><strong>MENTAL PRIVACY</strong></div>
-        <div class="pillar-desc">Prevent unwanted access to your brain data.</div>
-      </div>
-      <div>
-        <div class="pillar-title"><strong>MENTAL INTEGRITY</strong></div>
-        <div class="pillar-desc">Protect your mind from manipulation.</div>
-      </div>
-      <div>
-        <div class="pillar-title"><strong>SELF-DETERMINATION</strong></div>
-        <div class="pillar-desc">Choose if and how you engage with neural tech.</div>
-      </div>
+      <div><strong>FREEDOM OF THOUGHT</strong><div>Think freely without being nudged or coerced.</div></div>
+      <div><strong>MENTAL PRIVACY</strong><div>Prevent unwanted access to your brain data.</div></div>
+      <div><strong>MENTAL INTEGRITY</strong><div>Protect your mind from manipulation.</div></div>
+      <div><strong>SELF-DETERMINATION</strong><div>Choose if and how you engage with neural tech.</div></div>
     </div>
   </section>
 
-  <section class="content" id="goals">
+  <section class="content" id="goals" data-reveal>
     <h2><strong>Our Mission & Strategy</strong></h2>
     <div class="goals">
       <div><strong>1.</strong> Expose threats to autonomy and privacy.</div>
@@ -73,35 +64,38 @@
     </div>
   </section>
 
-  <section class="content" id="petition">
+  <section class="content" id="petition" data-reveal>
     <h2><strong>Take Action: Sign the Petition</strong></h2>
     <p>Support the Cognitive Liberty Act and demand mental privacy protections now.</p>
-    <a href="https://www.change.org/mindmatters" target="_blank" class="btn">✍ Sign Now</a>
+    <a href="https://www.change.org/mindmatters" target="_blank" class="btn btn-primary">✍ Sign Now</a>
   </section>
 
-  <section class="content" id="donate">
+  <section class="content" id="donate" data-reveal>
     <h2><strong>Support Our Cause</strong></h2>
     <p>Your donation helps us fund research, outreach, and advocacy. Every dollar makes a difference.</p>
-    <a href="https://www.paypal.com/ncp/payment/UYZQST9AGDJAW" target="_blank" class="btn btn-alt">💸 Donate via PayPal</a>
+    <a href="https://www.paypal.com/ncp/payment/UYZQST9AGDJAW" target="_blank" class="paypal-btn">💸 Donate via PayPal</a>
   </section>
 
-  <section class="content" id="news">
+  <section class="content" id="news" data-reveal>
     <h2><strong>News Feed</strong></h2>
-    <div id="news-feed" style="border:2px solid #007acc; border-radius:8px; padding:1rem; background:#fafcff;"></div>
+    <div id="news-feed" class="news-feed-box"></div>
   </section>
 
-  <section class="content" id="contact">
+  <section class="content" id="contact" data-reveal>
     <h2><strong>Contact Us</strong></h2>
     <form name="contact" method="POST" data-netlify="true">
       <input type="hidden" name="form-name" value="contact">
-      <input type="text" name="name" placeholder="Your Name" required>
-      <input type="email" name="email" placeholder="Your Email" required>
-      <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
-      <button type="submit" class="btn">📩 Send Message</button>
+      <label for="name">Your Name</label>
+      <input type="text" name="name" id="name" required />
+      <label for="email">Your Email</label>
+      <input type="email" name="email" id="email" required />
+      <label for="message">Your Message</label>
+      <textarea name="message" id="message" rows="5" required></textarea>
+      <button type="submit" class="btn btn-primary">📩 Send Message</button>
     </form>
   </section>
 
-  <footer>
+  <footer class="footer" role="contentinfo">
     <p>📬 Contact: <a href="mailto:cognitiveliberty.ca@gmail.com">cognitiveliberty.ca@gmail.com</a></p>
     <p>📢 Follow us: <a href="https://www.facebook.com/share/16cQwpybaK/" target="_blank">Facebook</a></p>
     <p>© 2025 Cognitive Liberty Foundation. All rights reserved.</p>
@@ -116,20 +110,18 @@
         return;
       }
       let html = posts.slice(0, 5).map(post => `
-        <div style="margin-bottom:1.2em; padding-bottom:1em; border-bottom:1px solid #e0e0e0;">
-          <div style="font-size:1.1em; font-weight:bold;">${post.title}</div>
-          <div style="color:#555; margin:.3em 0;">${new Date(post.date).toLocaleString()}</div>
-          <div>${post.body.replace(/\n/g, "<br>")}</div>
+        <div class="news-post">
+          <div class="news-title">${post.title}</div>
+          <div class="news-date">${new Date(post.date).toLocaleString()}</div>
+          <div class="news-body">${post.body.replace(/\\n/g, "<br>")}</div>
         </div>
       `).join('');
       container.innerHTML = html;
     }
     renderNewsFeed();
   </script>
-    <!-- Appy Chatbot widget, Place the code just before the closing body tag --> 
-    <script src="https://chatbot.appypie.com/widget/loadnew.js?companyId=683d9d51d6c4b8a3283daccc&botId=BOTID1748873752549&agentId=683d9d51d6c4b8a3283daccc"></script>
-    <!-- /. End Appy chatbot widget code --> 
-</body>
-</html>
+
+  <!-- Appy Chatbot -->
+  <script src="https://chatbot.appypie.com/widget/loadnew.js?companyId=683d9d51d6c4b8a3283daccc&botId=BOTID1748873752549&agentId=683d9d51d6c4b8a3283daccc"></script>
 </body>
 </html>
