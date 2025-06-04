@@ -1,156 +1,172 @@
-/* Global Reset & Base Styles */
-body {
+* {
   margin: 0;
-  font-family: Arial, sans-serif;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Helvetica Neue', sans-serif;
   background: #f5f7fa;
-  color: #222;
+  color: #1e1e1e;
   line-height: 1.6;
 }
 
-/* Center all heading text */
-h1, h2, h3, h4, h5, h6 {
-  text-align: center;
-}
-
-/* Center the form itself within its parent and its content */
-form {
-  margin-left: auto;
-  margin-right: auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-form input,
-form textarea,
-form button,
-.form-submit {
-  text-align: center;
-}
-
-header {
-  background: #222;
+/* Navbar */
+.navbar {
+  background: #14213d;
   color: white;
   padding: 1rem 2rem;
   display: flex;
-  align-items: center;
   justify-content: space-between;
+  align-items: center;
   flex-wrap: wrap;
 }
 
 .logo {
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   font-weight: bold;
 }
 
-nav ul {
-  display: flex;
-  gap: 1rem;
+.navbar ul {
   list-style: none;
-  padding: 0;
-  margin: 0;
+  display: flex;
+  gap: 1.2rem;
+  flex-wrap: wrap;
 }
 
-nav a {
+.navbar a {
   color: white;
   text-decoration: none;
   font-weight: 500;
 }
 
-#toggle-dark {
+.navbar a:hover {
+  text-decoration: underline;
+}
+
+.nav-toggle {
+  display: none;
   background: none;
   border: none;
   color: white;
-  font-size: 1.3rem;
+  font-size: 2rem;
   cursor: pointer;
 }
 
-/* Hero Section */
+@media (max-width: 768px) {
+  .nav-toggle {
+    display: block;
+  }
+
+  #nav-menu {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    background: #14213d;
+    margin-top: 1rem;
+  }
+
+  #nav-menu.show {
+    display: flex;
+  }
+
+  .navbar ul li {
+    padding: 0.5rem 0;
+  }
+}
+
+/* Hero */
 .hero {
-  text-align: center;
-  padding: 3rem 1rem;
-  background: linear-gradient(135deg, #0057a3, #59b4d4);
+  background: linear-gradient(135deg, #283e51, #485563);
   color: white;
+  padding: 4rem 2rem;
+  text-align: center;
 }
 
-.cta-buttons {
-  margin-top: 1.5rem;
-}
-
-.cta-buttons .btn {
-  background: #fff;
-  color: #0057a3;
-  padding: 0.75rem 1.5rem;
-  margin: 0 0.5rem;
+/* Buttons */
+.btn,
+.btn-primary,
+button {
+  background: #fca311;
+  color: #1e1e1e;
+  padding: 0.8rem 1.5rem;
   text-decoration: none;
   font-weight: bold;
-  border-radius: 5px;
-  transition: background 0.3s;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  display: inline-block;
+  margin: 0.5rem;
+  transition: background 0.3s ease;
 }
 
-.cta-buttons .btn:hover {
-  background: #f0f0f0;
+.btn:hover,
+.btn-primary:hover,
+button:hover {
+  background: #ffb733;
 }
 
-.btn-alt {
-  background: #ff4081;
+.paypal-btn {
+  background: #0070ba;
   color: white;
+  padding: 0.8rem 1.5rem;
+  border-radius: 4px;
+  display: inline-block;
+  text-decoration: none;
+  font-weight: bold;
 }
 
-.btn-alt:hover {
-  background: #e73370;
+.paypal-btn:hover {
+  background: #005c9e;
 }
 
-/* Content Sections */
+/* Sections */
 .content {
+  padding: 3rem 2rem;
   max-width: 900px;
-  margin: 2rem auto;
-  padding: 2rem;
-  background: white;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  text-align: center;
+  margin: auto;
 }
 
-.content h2 {
-  margin-top: 0;
-}
-
-.goals div {
-  margin-bottom: 1rem;
-  text-align: left;
-}
-
-/* Center all heading text */
-h1, h2, h3, h4, h5, h6 {
-  text-align: center;
-}
-
-/* Center the form itself within its parent and its content */
 form {
-  margin-left: auto;
-  margin-right: auto;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  gap: 1rem;
 }
 
-form input,
-form textarea,
-form button,
-.form-submit {
-  text-align: center;
+input,
+textarea {
+  padding: 0.8rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
 }
 
-/* Footer */
-footer {
-  background: #222;
+label {
+  font-weight: bold;
+}
+
+input:focus,
+textarea:focus {
+  outline: none;
+  border-color: #14213d;
+  box-shadow: 0 0 0 2px rgba(20, 33, 61, 0.2);
+}
+
+.footer {
+  background: #14213d;
   color: white;
-  padding: 2rem;
   text-align: center;
+  padding: 1rem;
 }
 
-footer a {
-  color: #7ecfff;
-  text-decoration: none;
+/* Scroll Animation */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+[data-reveal].revealed {
+  opacity: 1;
+  transform: translateY(0);
 }
