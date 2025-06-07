@@ -19,12 +19,19 @@
       .form-submit { background: #28a745; color: #fff; border: none; padding: 0.75rem 1.5rem; border-radius: 4px; cursor: pointer; font-size: 1rem; }
       .form-submit:hover { background: #1e7e34; }
       .info { font-size: 0.95em; color: #666; margin-bottom: 1rem; }
+      #auth-buttons { margin-bottom: 2rem; }
+      #user-info { margin-left: 1rem; color: #007acc; }
     </style>
-    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-    <script src="https://unpkg.com/netlify-cms@^2.0.0/dist/netlify-cms.js"></script>
+    <!-- Auth0 SPA JS SDK -->
+    <script src="https://cdn.auth0.com/js/auth0-spa-js/1.22/auth0-spa-js.production.js"></script>
   </head>
   <body>
     <div class="dashboard-container">
+      <div id="auth-buttons">
+        <button id="btn-login">Log In</button>
+        <button id="btn-logout" style="display:none;">Log Out</button>
+        <span id="user-info"></span>
+      </div>
       <div class="dashboard-card">
         <h2>Site Analytics</h2>
         <!-- Replace the src below with your Google Analytics/Looker Studio dashboard link -->
@@ -35,7 +42,6 @@
         <h2>Quick Admin Functions</h2>
         <div class="functions">
           <a href="/admin/" target="_blank">Open Content Manager</a>
-          <button onclick="netlifyIdentity.open()">User Management</button>
         </div>
       </div>
       <div class="dashboard-card">
@@ -59,14 +65,42 @@
       </div>
     </div>
     <script>
-      // Initialize Netlify Identity for user management
-      if (window.netlifyIdentity) {
-        window.netlifyIdentity.on("init", user => {
-          if (!user) {
-            window.netlifyIdentity.open();
-          }
+      // Auth0 config
+      const AUTH0_DOMAIN = "dev-6s7kanpr8id4jsej.us.auth0.com";
+      const AUTH0_CLIENT_ID = "XQYA5ZCxqS7r5Th9lbC0wDRwLxtJ5VphCWumK2uStc68vxs5XqjuOjNPp6Vhe";
+      let auth0 = null;
+
+      async function configureClient() {
+        auth0 = await createAuth0Client({
+          domain: AUTH0_DOMAIN,
+          client_id: AUTH0_CLIENT_ID,
+          cacheLocation: "localstorage"
         });
+
+        // If returning from Auth0 redirect, handle login state
+        if (window.location.search.includes("code=") && window.location.search.includes("state=")) {
+          await auth0.handleRedirectCallback();
+          window.history.replaceState({}, document.title, "/admin/dashboard/dashboard.html");
+        }
+
+        updateUI();
       }
+
+      async function updateUI() {
+        const isAuthenticated = await auth0.isAuthenticated();
+        document.getElementById('btn-login').style.display = isAuthenticated ? "none" : "inline-block";
+        document.getElementById('btn-logout').style.display = isAuthenticated ? "inline-block" : "none";
+        if (isAuthenticated) {
+          const user = await auth0.getUser();
+          document.getElementById('user-info').textContent = "Logged in as: " + (user.email || user.nickname);
+        } else {
+          document.getElementById('user-info').textContent = "";
+        }
+      }
+
+      window.onload = configureClient;
+      document.getElementById('btn-login').onclick = () => auth0.loginWithRedirect({ redirect_uri: window.location.href });
+      document.getElementById('btn-logout').onclick = () => auth0.logout({ returnTo: window.location.origin + "/admin/dashboard/dashboard.html" });
 
       // Simple form handler for demonstration — real posting is via Netlify CMS
       function handleNewsPost(event) {
