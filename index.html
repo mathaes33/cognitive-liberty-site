@@ -131,7 +131,44 @@
     renderNewsFeed();
   </script>
 
-  <!-- Appy Chatbot -->
-  <script async src="https://chatbot.appypie.com/widget/loadnew.js?companyId=683d9d51d6c4b8a3283daccc&botId=BOTID1748873752549&agentId=683d9d51d6c4b8a3283daccc"></script>
+  <script>
+document.addEventListener('DOMContentLoaded', () => {
+  const toggleDark = document.getElementById('toggle-dark');
+  const navToggle = document.querySelector('.nav-toggle');
+  const navMenu = document.querySelector('nav ul');
+  const body = document.body;
+
+  // Dark Mode Persistence
+  if (localStorage.getItem('darkMode') === 'true') {
+    body.classList.add('dark');
+    toggleDark.setAttribute('aria-pressed', 'true');
+  }
+
+  toggleDark?.addEventListener('click', () => {
+    const isDark = body.classList.toggle('dark');
+    localStorage.setItem('darkMode', isDark);
+    toggleDark.setAttribute('aria-pressed', isDark);
+  });
+
+  // Mobile Nav Toggle
+  navToggle?.addEventListener('click', () => {
+    const expanded = navToggle.getAttribute('aria-expanded') === 'true' || false;
+    navToggle.setAttribute('aria-expanded', !expanded);
+    navMenu.classList.toggle('show');
+  });
+
+  // Scroll Reveal Animation
+  const observer = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('revealed');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('[data-reveal]').forEach(el => observer.observe(el));
+});
+</script>
 </body>
 </html>
